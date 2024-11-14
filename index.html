@@ -15,12 +15,10 @@
 
 <body>
     <script>
-        // Function to save scroll position
         function saveScrollPosition() {
             localStorage.setItem('scrollPosition', window.scrollY);
         }
 
-        // Function to restore scroll position
         function restoreScrollPosition() {
             const scrollPosition = localStorage.getItem('scrollPosition');
             if (scrollPosition) {
@@ -28,10 +26,8 @@
             }
         }
 
-        // Save scroll position before the page unloads
         window.addEventListener('beforeunload', saveScrollPosition);
 
-        // Restore scroll position when the page loads
         window.addEventListener('load', restoreScrollPosition);
 
         const imageContainer = document.createElement('div');
