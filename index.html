@@ -41,7 +41,7 @@
 <body>
     <div id="pageIndicator"></div>
 
-    <button id="bookmarkButton">Lưu dấu trang</button>
+    <!-- <button id="bookmarkButton">Lưu dấu trang</button> -->
 
     <script>
         const imageContainer = document.createElement('div');
@@ -86,11 +86,11 @@
 
         window.addEventListener('scroll', updatePageIndicator);
 
-        document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
+        // document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
 
-        function saveScrollPosition() {
-            console.log(currentPage);
-        }
+        // function saveScrollPosition() {
+        //     console.log(currentPage);
+        // }
 
         // document.addEventListener('DOMContentLoaded', () => {
         //     const savedPage = localStorage.getItem('bookmarkPage');
