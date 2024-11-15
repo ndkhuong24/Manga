@@ -15,20 +15,20 @@
 
 <body>
     <script>
-        function saveScrollPosition() {
-            localStorage.setItem('scrollPosition', window.scrollY);
-        }
+        // function saveScrollPosition() {
+        //     localStorage.setItem('scrollPosition', window.scrollY);
+        // }
 
-        function restoreScrollPosition() {
-            const scrollPosition = localStorage.getItem('scrollPosition');
-            if (scrollPosition) {
-                window.scrollTo(0, parseInt(scrollPosition, 10));
-            }
-        }
+        // function restoreScrollPosition() {
+        //     const scrollPosition = localStorage.getItem('scrollPosition');
+        //     if (scrollPosition) {
+        //         window.scrollTo(0, parseInt(scrollPosition, 10));
+        //     }
+        // }
 
-        window.addEventListener('beforeunload', saveScrollPosition);
+        // window.addEventListener('beforeunload', saveScrollPosition);
 
-        window.addEventListener('load', restoreScrollPosition);
+        // window.addEventListener('load', restoreScrollPosition);
 
         const imageContainer = document.createElement('div');
 
@@ -45,7 +45,7 @@
 
             imageContainer.appendChild(img);
         }
-        
+
         document.body.appendChild(imageContainer);
     </script>
 </body>
