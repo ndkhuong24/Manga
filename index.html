@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intern Haenyeo</title>
     <style>
+        body {
+            margin: 0;
+        }
+
         img {
             width: 100%;
             height: auto;
+            display: block;
         }
 
         #pageIndicator {
@@ -40,14 +45,15 @@
 
     <script>
         const imageContainer = document.createElement('div');
-
         const pageIndicator = document.getElementById('pageIndicator');
-
         const totalImages = 1459;
+        let currentPage = 0;
 
         for (let i = 1; i <= totalImages; i++) {
             const img = document.createElement('img');
+
             img.loading = 'lazy';
+
             if (i <= 999) {
                 img.src = `Intern Haenyeo 1/Intern Haenyeo (${i}).jpg`;
             } else {
@@ -55,25 +61,21 @@
             }
 
             img.alt = `Image ${i}`;
+
             imageContainer.appendChild(img);
         }
 
         document.body.appendChild(imageContainer);
 
-        // Tính toán và hiển thị trang hiện tại
         function updatePageIndicator() {
             const images = document.querySelectorAll('img');
-            let currentPage = 0;
 
             images.forEach((img, index) => {
                 const rect = img.getBoundingClientRect();
                 const imgHeight = rect.bottom - rect.top;
 
-                // Kiểm tra nếu một phần đáng kể (50%) của hình ảnh đang hiển thị
                 if (
-                    rect.top < window.innerHeight && // Phần trên của hình ảnh nằm trong viewport
-                    rect.bottom > 0 && // Phần dưới của hình ảnh vẫn chưa vượt qua viewport
-                    (rect.bottom - window.innerHeight / 2 > 0 || rect.top + imgHeight / 2 < window.innerHeight)
+                    rect.top < window.innerHeight && rect.bottom > 0 && (rect.bottom - window.innerHeight / 2 > 0 || rect.top + imgHeight / 2 < window.innerHeight)
                 ) {
                     currentPage = index + 1;
                 }
@@ -82,7 +84,6 @@
             pageIndicator.textContent = `Trang: ${currentPage} / ${totalImages}`;
         }
 
-        // Lắng nghe sự kiện cuộn để cập nhật trang
         window.addEventListener('scroll', updatePageIndicator);
 
         document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
@@ -90,6 +91,17 @@
         function saveScrollPosition() {
             console.log(currentPage);
         }
+
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const savedPage = localStorage.getItem('bookmarkPage');
+        //     if (savedPage) {
+        //         alert(`Phục hồi đến trang: ${savedPage}`);
+        //         const targetImage = document.querySelectorAll('img')[savedPage - 1];
+        //         if (targetImage) {
+        //             targetImage.scrollIntoView();
+        //         }
+        //     }
+        // });
     </script>
 </body>
 
