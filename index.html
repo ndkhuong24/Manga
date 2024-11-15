@@ -10,25 +10,37 @@
             width: 100%;
             height: auto;
         }
+
+        #bookmarkButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
     </style>
 </head>
 
 <body>
+    <button id="bookmarkButton">Lưu dấu trang</button>
+
     <script>
-        // function saveScrollPosition() {
-        //     localStorage.setItem('scrollPosition', window.scrollY);
-        // }
+        function saveScrollPosition() {
+            localStorage.setItem('scrollPosition', window.scrollY);
+        }
 
-        // function restoreScrollPosition() {
-        //     const scrollPosition = localStorage.getItem('scrollPosition');
-        //     if (scrollPosition) {
-        //         window.scrollTo(0, parseInt(scrollPosition, 10));
-        //     }
-        // }
+        document.getElementById('bookmarkButton').addEventListener('click', () => {
+            saveScrollPosition();
+            alert('Vị trí đã được lưu thành công!');
+        });
 
-        // window.addEventListener('beforeunload', saveScrollPosition);
+        function restoreScrollPosition() {
+            const scrollPosition = localStorage.getItem('scrollPosition');
+            if (scrollPosition) {
+                window.scrollTo(0, parseInt(scrollPosition, 150));
+            }
+        }
 
-        // window.addEventListener('load', restoreScrollPosition);
+        window.addEventListener('load', restoreScrollPosition);
 
         const imageContainer = document.createElement('div');
 
