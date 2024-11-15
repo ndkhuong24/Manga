@@ -31,6 +31,7 @@
         window.addEventListener('load', restoreScrollPosition);
 
         const imageContainer = document.createElement('div');
+
         for (let i = 1; i <= 1459; i++) {
             const img = document.createElement('img');
             img.loading = 'lazy';
@@ -39,9 +40,12 @@
             } else {
                 img.src = `Intern Haenyeo 2/Intern Haenyeo (${i}).jpg`;
             }
+
             img.alt = `Image ${i}`;
+
             imageContainer.appendChild(img);
         }
+        
         document.body.appendChild(imageContainer);
     </script>
 </body>
