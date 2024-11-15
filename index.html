@@ -41,7 +41,7 @@
 <body>
     <div id="imageContainer"></div>
     <div id="pageIndicator"></div>
-    <button id="bookmarkButton">Lưu dấu trang</button>
+    <!-- <button id="bookmarkButton">Lưu dấu trang</button> -->
 
     <script>
         const imageContainer = document.getElementById('imageContainer');
@@ -75,12 +75,12 @@
             pageIndicator.textContent = `Trang: ${currentPage} / ${totalImages}`;
         }
 
-        function saveScrollPosition() {
-            localStorage.setItem('bookmarkPage', currentPage);
-        }
+        // function saveScrollPosition() {
+        //     localStorage.setItem('bookmarkPage', currentPage);
+        // }
 
         window.addEventListener('scroll', updatePageIndicator);
-        document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
+        // document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
 
         // document.addEventListener('DOMContentLoaded', () => {
         //     const savedPage = parseInt(localStorage.getItem('bookmarkPage'), 10);
