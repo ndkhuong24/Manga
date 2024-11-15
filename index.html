@@ -62,7 +62,7 @@
         }
 
         function updatePageIndicator() {
-            const images = imageContainer.querySelectorAll('img'); 
+            const images = imageContainer.querySelectorAll('img');
             images.forEach((img, index) => {
                 const rect = img.getBoundingClientRect();
                 const imgHeight = rect.bottom - rect.top;
@@ -80,7 +80,7 @@
         document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
 
         function saveScrollPosition() {
-            console.log(currentPage);
+            localStorage.setItem('bookmarkPage', currentPage);
         }
 
         // document.addEventListener('DOMContentLoaded', () => {
