@@ -11,37 +11,19 @@
             height: auto;
         }
 
-        #bookmarkButton {
+        /* #bookmarkButton {
             position: fixed;
             bottom: 10px;
             right: 10px;
             z-index: 1000;
-        }
+        } */
     </style>
 </head>
 
 <body>
-    <button id="bookmarkButton">Lưu dấu trang</button>
+    <!-- <button id="bookmarkButton">Lưu dấu trang</button> -->
 
     <script>
-        function saveScrollPosition() {
-            localStorage.setItem('scrollPosition', window.scrollY);
-        }
-
-        document.getElementById('bookmarkButton').addEventListener('click', () => {
-            saveScrollPosition();
-            alert('Vị trí đã được lưu thành công!');
-        });
-
-        function restoreScrollPosition() {
-            const scrollPosition = localStorage.getItem('scrollPosition');
-            if (scrollPosition) {
-                window.scrollTo(0, parseInt(scrollPosition, 150));
-            }
-        }
-
-        window.addEventListener('load', restoreScrollPosition);
-
         const imageContainer = document.createElement('div');
 
         for (let i = 1; i <= 1459; i++) {
