@@ -75,21 +75,19 @@
             pageIndicator.textContent = `Trang: ${currentPage} / ${totalImages}`;
         }
 
-        window.addEventListener('scroll', updatePageIndicator);
-
-        document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
-
         function saveScrollPosition() {
             localStorage.setItem('bookmarkPage', currentPage);
         }
 
+        window.addEventListener('scroll', updatePageIndicator);
+        document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
+
         // document.addEventListener('DOMContentLoaded', () => {
-        //     const savedPage = localStorage.getItem('bookmarkPage');
-        //     if (savedPage) {
-        //         alert(`Phục hồi đến trang: ${savedPage}`);
+        //     const savedPage = parseInt(localStorage.getItem('bookmarkPage'), 10);
+        //     if (savedPage && savedPage > 0 && savedPage <= totalImages) {
         //         const targetImage = imageContainer.querySelectorAll('img')[savedPage - 1];
         //         if (targetImage) {
-        //             targetImage.scrollIntoView();
+        //             targetImage.scrollIntoView({ behavior: 'smooth', block: 'start' });
         //         }
         //     }
         // });
