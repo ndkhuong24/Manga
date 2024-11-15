@@ -39,64 +39,55 @@
 </head>
 
 <body>
+    <div id="imageContainer"></div>
     <div id="pageIndicator"></div>
-
-    <!-- <button id="bookmarkButton">Lưu dấu trang</button> -->
+    <button id="bookmarkButton">Lưu dấu trang</button>
 
     <script>
-        const imageContainer = document.createElement('div');
+        const imageContainer = document.getElementById('imageContainer');
         const pageIndicator = document.getElementById('pageIndicator');
         const totalImages = 1459;
         let currentPage = 0;
 
         for (let i = 1; i <= totalImages; i++) {
             const img = document.createElement('img');
-
             img.loading = 'lazy';
-
             if (i <= 999) {
                 img.src = `Intern Haenyeo 1/Intern Haenyeo (${i}).jpg`;
             } else {
                 img.src = `Intern Haenyeo 2/Intern Haenyeo (${i}).jpg`;
             }
-
             img.alt = `Image ${i}`;
-
             imageContainer.appendChild(img);
         }
 
-        document.body.appendChild(imageContainer);
-
         function updatePageIndicator() {
-            const images = document.querySelectorAll('img');
-
+            const images = imageContainer.querySelectorAll('img'); 
             images.forEach((img, index) => {
                 const rect = img.getBoundingClientRect();
                 const imgHeight = rect.bottom - rect.top;
-
                 if (
                     rect.top < window.innerHeight && rect.bottom > 0 && (rect.bottom - window.innerHeight / 2 > 0 || rect.top + imgHeight / 2 < window.innerHeight)
                 ) {
                     currentPage = index + 1;
                 }
             });
-
             pageIndicator.textContent = `Trang: ${currentPage} / ${totalImages}`;
         }
 
         window.addEventListener('scroll', updatePageIndicator);
 
-        // document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
+        document.getElementById('bookmarkButton').addEventListener('click', saveScrollPosition);
 
-        // function saveScrollPosition() {
-        //     console.log(currentPage);
-        // }
+        function saveScrollPosition() {
+            console.log(currentPage);
+        }
 
         // document.addEventListener('DOMContentLoaded', () => {
         //     const savedPage = localStorage.getItem('bookmarkPage');
         //     if (savedPage) {
         //         alert(`Phục hồi đến trang: ${savedPage}`);
-        //         const targetImage = document.querySelectorAll('img')[savedPage - 1];
+        //         const targetImage = imageContainer.querySelectorAll('img')[savedPage - 1];
         //         if (targetImage) {
         //             targetImage.scrollIntoView();
         //         }
